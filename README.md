@@ -66,3 +66,17 @@ The data platform from Cloudera provides self-service access to integrated, mult
 * Aligned Practices across Environments: implementing common and consistent practices for the management of multiple cloud environments result in lower operational costs and enhanced security practices.
 
 ![alt text](img/cmlplatform.png)
+
+
+### Use Case Summary
+
+In this project you will use Iceberg to preprocess a dataset of immunological biomarkers in children with asthmatic bronchitis in order to develop an XGBoost classifier for rapid differential diagnosis of this disease.
+
+In more detail, you will:
+
+* Leverage CML's built-in MLFlow to prototype an XGBoost classifier with different hyperparameters.
+* Stage a model from an Experiment to the MLFlow Registry.
+* Track and store Iceberg Metadata in MLFlow. Build a reproducible MLOps pipeline to only train on the freshest data thanks to Iceberg Incremental Reads.
+* Simulate new model prediction requests and monitor model performance in production.
+
+The dataset is synthetic and is built after the data and use case outlined in this [Research Paper](https://www.mdpi.com/1648-9144/59/10/1765).
