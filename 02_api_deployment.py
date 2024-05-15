@@ -81,4 +81,4 @@ modelBuildId = createModelBuildResponse.id
 deployment.createModelDeployment(modelBuildId, projectId, modelCreationId)
 
 ## NOW TRY A REQUEST WITH THIS PAYLOAD!
-#{"dataframe_split": {"columns": ["cd8_perc", "cd19_perc", "cd45_abs_count", "cd45_abs_count", "cd3_perc", "cd19_abs_count","iga", "c3", "cd4_abs_count", "cd16cd56_perc", "cd8_abs_count", "cd4_ratio_cd8", "age", "cd3_abs_count","igm", "cd4_perc", "tige", "ch50", "c4", "cd16cd56_abs_count", "allergy_hist", "lung_compl", "gender"], "data":[[0.5, 0.6, 2.5, 0.5, 0.1, 0.5, 0.3, 0.2, 0.5, 0.5, 0.5, 0.5, 0.5, 120.5, 12.5, 1.3, 6.4, 0.1, 0.2, 0.3, 1.5, 2.1, 2.5]]}}
+#{"dataframe_split": {"columns": ["cd8_perc", "cd19_perc", "cd45_abs_count", "cd3_perc", "cd19_abs_count","iga", "c3", "cd4_abs_count", "cd16cd56_perc", "cd8_abs_count", "cd4_ratio_cd8", "age", "cd3_abs_count","igm", "cd4_perc", "tige", "ch50", "c4", "cd16cd56_abs_count", "allergy_hist", "lung_compl", "gender"], "data":[[0.5, 0.6, 2.5, 0.5, 0.1, 0.5, 0.2, 0.5, 0.5, 0.5, 0.5, 0.5, 120.5, 12.5, 1.3, 6.4, 0.1, 0.2, 0.3, 1.5, 2.1, 2.5]]}}
