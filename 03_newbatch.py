@@ -54,7 +54,7 @@ class HealthDataGen:
 
     '''Class to Generate Biomarkers Data'''
 
-    def __init__(self, username, storage, dbname, connectionName):
+    def __init__(self, username, dbname, storage, connectionName):
         self.username = username
         self.storage = storage
         self.dbname = dbname
