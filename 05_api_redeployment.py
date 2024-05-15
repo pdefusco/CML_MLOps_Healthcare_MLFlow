@@ -194,9 +194,10 @@ experimentId = runsDf.iloc[-1]['experiment_id']
 experimentRunId = runsDf.iloc[-1]['run_id']
 
 modelPath = "artifacts"
-modelName = "AsthmaticBronchCLF-" + username
+modelName = "AsthmaticBronchCLF-" + USERNAME
 
-deployment = ModelReDeployment(projectId, username)
+
+deployment = ModelReDeployment(projectId, USERNAME)
 getLatestDeploymentResponse = deployment.get_latest_deployment_details(modelName)
 
 listRuntimesResponse = deployment.listRuntimes()
