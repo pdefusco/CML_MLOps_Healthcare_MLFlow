@@ -164,8 +164,8 @@ def main():
 
     USERNAME = os.environ["PROJECT_OWNER"]
     DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
-    STORAGE = "s3a://eng-ml-weekly"
-    CONNECTION_NAME = "eng-ml-int-env-aws-dl"
+    STORAGE = "s3a://go01-demo"
+    CONNECTION_NAME = "go01-aw-dl"
 
     # Instantiate BankDataGen class
     dg = HealthDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)

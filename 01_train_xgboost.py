@@ -52,8 +52,8 @@ import pyspark.pandas as ps
 
 USERNAME = os.environ["PROJECT_OWNER"]
 DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
-STORAGE = "s3a://eng-ml-weekly"
-CONNECTION_NAME = "eng-ml-int-env-aws-dl"
+STORAGE = "s3a://go01-demo"
+CONNECTION_NAME = "go01-aw-dl"
 
 DATE = date.today()
 EXPERIMENT_NAME = "xgb-biomrkrs-{0}".format(USERNAME)
