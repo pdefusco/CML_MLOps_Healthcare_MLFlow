@@ -60,15 +60,15 @@ class HealthDataGen:
         self.dbname = dbname
         self.connectionName = connectionName
 
-    def biomarkersDataGen(self, shuffle_partitions_requested = 10, partitions_requested = 10, data_rows = 10000):
+    def biomarkersDataGen(self, spark, shuffle_partitions_requested = 10, partitions_requested = 10, data_rows = 10000):
 
         # setup use of Faker
         FakerTextUS = FakerTextFactory(locale=['en_US'], providers=[bank])
 
         # partition parameters etc.
-        self.spark.conf.set("spark.sql.shuffle.partitions", shuffle_partitions_requested)
+        spark.conf.set("spark.sql.shuffle.partitions", shuffle_partitions_requested)
 
-        fakerDataspec = (DataGenerator(self.spark, rows=data_rows, partitions=partitions_requested)
+        fakerDataspec = (DataGenerator(spark, rows=data_rows, partitions=partitions_requested)
                     .withColumn("cd8_perc", "float", minValue=0, maxValue=1, random=True)
                     .withColumn("cd19_perc", "float", minValue=0, maxValue=1, random=True)
                     .withColumn("cd45_abs_count", "float", minValue=1, maxValue=100000, random=True)

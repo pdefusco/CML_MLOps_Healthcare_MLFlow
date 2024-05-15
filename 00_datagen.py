@@ -60,7 +60,7 @@ class HealthDataGen:
         self.dbname = dbname
         self.connectionName = connectionName
 
-    def biomarkersDataGen(self, shuffle_partitions_requested = 10, partitions_requested = 10, data_rows = 10000):
+    def biomarkersDataGen(self, spark, shuffle_partitions_requested = 10, partitions_requested = 10, data_rows = 10000):
 
         # setup use of Faker
         FakerTextUS = FakerTextFactory(locale=['en_US'], providers=[bank])
