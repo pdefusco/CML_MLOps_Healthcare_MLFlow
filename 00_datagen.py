@@ -54,8 +54,11 @@ class HealthDataGen:
 
     '''Class to Generate Biomarkers Data'''
 
-    def __init__(self, spark):
-        self.spark = spark
+    def __init__(self, username, storage, dbname, connectionName):
+        self.username = username
+        self.storage = storage
+        self.dbname = dbname
+        self.connectionName = connectionName
 
     def biomarkersDataGen(self, shuffle_partitions_requested = 10, partitions_requested = 10, data_rows = 10000):
 
