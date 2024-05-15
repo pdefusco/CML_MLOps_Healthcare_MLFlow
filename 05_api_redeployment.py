@@ -183,6 +183,7 @@ USERNAME = os.environ["PROJECT_OWNER"]
 DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
 STORAGE = "s3a://go01-demo"
 CONNECTION_NAME = "go01-aw-dl"
+projectId = os.environ['CDSW_PROJECT_ID']
 
 # SET MLFLOW EXPERIMENT NAME
 experimentName = "xgb-biomrkrs-{0}".format(USERNAME)
