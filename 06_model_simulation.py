@@ -93,8 +93,9 @@ def submitRequest(Model_AccessKey):
     Method to create and send a synthetic request to Time Series Query Model
     """
 
-    record = '{"dataframe_split": {"columns": ["age", "credit_card_balance", "bank_account_balance", "mortgage_balance", "sec_bank_account_balance", "savings_account_balance", "sec_savings_account_balance", "total_est_nworth", "primary_loan_balance", "secondary_loan_balance", "uni_loan_balance", "longitude", "latitude", "transaction_amount"]}}'
-    randomInts = [[random.uniform(1.01,500.01) for i in range(14)]]
+    record = '{"dataframe_split": {"columns": ["cd8_perc", "cd19_perc", "cd45_abs_count", "cd45_abs_count", "cd3_perc", "cd19_abs_count","iga", "c3", "cd4_abs_count", "cd16cd56_perc", "cd8_abs_count", "cd4_ratio_cd8", "age", "cd3_abs_count","igm", "cd4_perc", "tige", "ch50", "c4", "cd16cd56_abs_count", "allergy_hist", "lung_compl", "gender"]}}'
+
+    randomInts = [[random.uniform(0.01,500.01) for i in range(23)]]
     data = json.loads(record)
     data["dataframe_split"]["data"] = randomInts
     response = cdsw.call_model(Model_AccessKey, data)
