@@ -178,7 +178,7 @@ def main():
     spark = dg.createSparkConnection()
 
     # Create Banking Transactions DF
-    df = dg.dataGen(spark)
+    df = dg.biomarkersDataGen(spark)
 
     # Create Spark Database
     dg.createDatabase(spark)

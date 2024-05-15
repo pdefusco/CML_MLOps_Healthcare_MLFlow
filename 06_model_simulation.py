@@ -69,7 +69,7 @@ dg = HealthDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)
 spark = dg.createSparkConnection()
 
 # Create Banking Transactions DF
-sparkDf = dg.dataGen(spark)
+sparkDf = dg.biomarkersDataGen(spark)
 
 df = sparkDf.toPandas()
 
