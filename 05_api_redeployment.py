@@ -103,6 +103,32 @@ class ModelReDeployment():
         return api_response
 
 
+    def registerModelFromExperimentRun(self, modelName, experimentId, experimentRunId, modelPath):
+        """
+        Method to register a model from an Experiment Run
+        This is an alternative to the mlflow method to register a model via the register_model parameter in the log_model method
+        Input: requires an experiment run
+        Output:
+        """
+
+        CreateRegisteredModelRequest = {
+                                        "project_id": os.environ['CDSW_PROJECT_ID'],
+                                        "experiment_id" : experimentId,
+                                        "run_id": experimentRunId,
+                                        "model_name": modelName,
+                                        "model_path": modelPath
+                                       }
+
+        try:
+            # Register a model.
+            api_response = self.client.create_registered_model(CreateRegisteredModelRequest)
+            pprint(api_response)
+        except ApiException as e:
+            print("Exception when calling CMLServiceApi->create_registered_model: %s\n" % e)
+
+        return api_response
+
+
     def listRuntimes(self):
         """
         Method to list available runtimes
@@ -181,8 +207,8 @@ class ModelReDeployment():
 
 USERNAME = os.environ["PROJECT_OWNER"]
 DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
-STORAGE = "s3a://go01-demo"
-CONNECTION_NAME = "go01-aw-dl"
+STORAGE = "s3a://paul-sdbx-buk-c99799b7/data"
+CONNECTION_NAME = "paul-sdbx-aw-dl"
 projectId = os.environ['CDSW_PROJECT_ID']
 
 # SET MLFLOW EXPERIMENT NAME
@@ -201,14 +227,20 @@ modelName = "AsthmaticBronchCLF-" + USERNAME
 deployment = ModelReDeployment(projectId, USERNAME)
 getLatestDeploymentResponse = deployment.get_latest_deployment_details(modelName)
 
-listRuntimesResponse = deployment.listRuntimes()
-listRuntimesResponse
+registeredModelResponse = deployment.registerModelFromExperimentRun(modelName, experimentId, experimentRunId, modelPath)
 
-runtimeId = 'docker.repository.cloudera.com/cloudera/cdsw/ml-runtime-workbench-python3.9-standard:2024.02.1-b4' # Copy a runtime ID from previous output
+modelId = registeredModelResponse.model_id
+modelVersionId = registeredModelResponse.model_versions[0].model_version_id
+
+registeredModelResponse.model_versions[0].model_version_id
+
+modelCreationId = getLatestDeploymentResponse["model_id"]
 
 cpu = 2
 mem = 4
 replicas = 1
+
+runtimeId = 'docker.repository.cloudera.com/cloudera/cdsw/ml-runtime-workbench-python3.9-standard:2024.02.1-b4' # Copy a runtime ID from previous output
 
 createModelBuildResponse = deployment.createModelBuild(projectId, modelVersionId, modelCreationId, runtimeId, cpu, mem, replicas)
 modelBuildId = createModelBuildResponse.id
