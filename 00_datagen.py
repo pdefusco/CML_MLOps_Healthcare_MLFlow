@@ -167,8 +167,8 @@ def main():
 
     USERNAME = os.environ["PROJECT_OWNER"]
     DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
-    STORAGE = "s3a://paul-sdbx-buk-c99799b7/data"
-    CONNECTION_NAME = "paul-sdbx-aw-dl"
+    STORAGE = "s3a://pdf-jul-25-buk-278dd34b/data"
+    CONNECTION_NAME = "pdf-jul-25-aw-dl"
 
     # Instantiate BankDataGen class
     dg = HealthDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)

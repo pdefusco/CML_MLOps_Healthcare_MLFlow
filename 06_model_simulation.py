@@ -38,7 +38,12 @@
 #
 # ###########################################################################
 
-import cdsw
+try:
+    import cml.utils_v1 as utils
+    cdsw = utils._emulate_cdsw()
+except ImportError:
+    import cdsw
+
 import time, os, random, json, copy
 import numpy as np
 import pandas as pd
@@ -59,8 +64,8 @@ import datetime
 # SET USER VARIABLES
 USERNAME = os.environ["PROJECT_OWNER"]
 DBNAME = "HEALTHCARE_MLOPS_HOL_{}".format(USERNAME)
-STORAGE = "s3a://paul-sdbx-buk-c99799b7/data"
-CONNECTION_NAME = "paul-sdbx-aw-dl"
+STORAGE = "s3a://pdf-jul-25-buk-278dd34b/data"
+CONNECTION_NAME = "pdf-jul-25-aw-dl"
 
 # Instantiate BankDataGen class
 dg = HealthDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)

@@ -52,8 +52,8 @@ import pyspark.pandas as ps
 # SET USER VARIABLES
 USERNAME = os.environ["PROJECT_OWNER"]
 DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
-STORAGE = "s3a://paul-sdbx-buk-c99799b7/data"
-CONNECTION_NAME = "paul-sdbx-aw-dl"
+STORAGE = "s3a://pdf-jul-25-buk-278dd34b/data"
+CONNECTION_NAME = "pdf-jul-25-aw-dl"
 
 # SET MLFLOW EXPERIMENT NAME
 EXPERIMENT_NAME = "xgb-biomrkrs-{0}".format(USERNAME)
