@@ -54,9 +54,8 @@ class HealthDataGen:
 
     '''Class to Generate Biomarkers Data'''
 
-    def __init__(self, username, dbname, storage, connectionName):
+    def __init__(self, username, dbname, connectionName):
         self.username = username
-        self.storage = storage
         self.dbname = dbname
         self.connectionName = connectionName
 
@@ -118,14 +117,6 @@ class HealthDataGen:
         spark = conn.get_spark_session()
 
         return spark
-
-
-    def saveFileToCloud(self, df):
-        """
-        Method to save credit card transactions df as csv in cloud storage
-        """
-
-        df.write.format("csv").mode('overwrite').save(self.storage + "/health_biomarkers_demo/" + self.username)
 
 
     def createDatabase(self, spark):
