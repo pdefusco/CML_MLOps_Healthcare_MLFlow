@@ -54,9 +54,8 @@ class HealthDataGen:
 
     '''Class to Generate Biomarkers Data'''
 
-    def __init__(self, username, dbname, storage, connectionName):
+    def __init__(self, username, dbname, connectionName):
         self.username = username
-        self.storage = storage
         self.dbname = dbname
         self.connectionName = connectionName
 
@@ -120,14 +119,6 @@ class HealthDataGen:
         return spark
 
 
-    def saveFileToCloud(self, df):
-        """
-        Method to save credit card transactions df as csv in cloud storage
-        """
-
-        df.write.format("csv").mode('overwrite').save(self.storage + "/health_biomarkers_demo/" + self.username)
-
-
     def createDatabase(self, spark):
         """
         Method to create database before data generated is saved to new database and table
@@ -166,12 +157,11 @@ class HealthDataGen:
 def main():
 
     USERNAME = os.environ["PROJECT_OWNER"]
-    DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
-    STORAGE = "s3a://pdf-jul-25-buk-278dd34b/data"
-    CONNECTION_NAME = "pdf-jul-25-aw-dl"
+    DBNAME = os.environ["DBNAME_PREFIX"]+"_"+USERNAME
+    CONNECTION_NAME = os.environ["SPARK_CONNECTION_NAME"]
 
     # Instantiate BankDataGen class
-    dg = HealthDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)
+    dg = HealthDataGen(USERNAME, DBNAME, CONNECTION_NAME)
 
     # Create CML Spark Connection
     spark = dg.createSparkConnection()

@@ -206,9 +206,8 @@ class ModelReDeployment():
         }
 
 USERNAME = os.environ["PROJECT_OWNER"]
-DBNAME = "HEALTHCARE_MLOPS_HOL_"+USERNAME
-STORAGE = "s3a://pdf-jul-25-buk-278dd34b/data"
-CONNECTION_NAME = "pdf-jul-25-aw-dl"
+DBNAME = os.environ["DBNAME_PREFIX"]+"_"+USERNAME
+CONNECTION_NAME = os.environ["SPARK_CONNECTION_NAME"]
 projectId = os.environ['CDSW_PROJECT_ID']
 
 # SET MLFLOW EXPERIMENT NAME
@@ -241,7 +240,7 @@ cpu = 2
 mem = 4
 replicas = 1
 
-runtimeId = 'docker.repository.cloudera.com/cloudera/cdsw/ml-runtime-pbj-workbench-python3.10-standard:2025.06.1-b5' # Copy a runtime ID from previous output
+runtimeId = "docker.repository.cloudera.com/cloudera/cdsw/ml-runtime-pbj-workbench-python3.10-standard:2025.09.1-b5" #Modify as needed
 
 createModelBuildResponse = deployment.createModelBuild(projectId, modelVersionId, modelCreationId, runtimeId, cpu, mem, replicas)
 modelBuildId = createModelBuildResponse.id

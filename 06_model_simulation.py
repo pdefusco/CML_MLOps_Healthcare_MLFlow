@@ -63,12 +63,11 @@ import datetime
 
 # SET USER VARIABLES
 USERNAME = os.environ["PROJECT_OWNER"]
-DBNAME = "HEALTHCARE_MLOPS_HOL_{}".format(USERNAME)
-STORAGE = "s3a://pdf-jul-25-buk-278dd34b/data"
-CONNECTION_NAME = "pdf-jul-25-aw-dl"
+DBNAME = os.environ["DBNAME_PREFIX"]+"_"+USERNAME
+CONNECTION_NAME = os.environ["SPARK_CONNECTION_NAME"]
 
 # Instantiate BankDataGen class
-dg = HealthDataGen(USERNAME, DBNAME, STORAGE, CONNECTION_NAME)
+dg = HealthDataGen(USERNAME, DBNAME, CONNECTION_NAME)
 
 # Create CML Spark Connection
 spark = dg.createSparkConnection()
